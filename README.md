@@ -2,14 +2,14 @@
 
 ## Overview
 
-This project scrapes data from multiple Large Language Model (LLM) leaderboards, namely [LiveBench.ai](https://livebench.ai/#/) [cite: 6] and the [LMSYS Chatbot Arena Leaderboard](https://lmarena-ai-chatbot-arena-leaderboard.hf.space/)[cite: 3]. It utilizes an LLM (specifically configured to use OpenAI's `gpt-4o-mini` via API) to intelligently map potentially inconsistent model names between these sources. Finally, it merges the standardized data into a single CSV file for easier analysis and comparison.
+This project scrapes data from multiple Large Language Model (LLM) leaderboards, namely [LiveBench.ai](https://livebench.ai/#/) and the [LMSYS Chatbot Arena Leaderboard](https://lmarena-ai-chatbot-arena-leaderboard.hf.space/). It utilizes an LLM (specifically configured to use OpenAI's `gpt-4o-mini` via API) to intelligently map potentially inconsistent model names between these sources. Finally, it merges the standardized data into a single CSV file for easier analysis and comparison.
 
 ## Features
 
-* Scrapes leaderboard data from LiveBench.ai using Selenium and BeautifulSoup[cite: 6].
-* Scrapes leaderboard data from the LMSYS Chatbot Arena Hugging Face Space by parsing embedded configuration data[cite: 3].
-* Scrapes data from the Hugging Face Open LLM Leaderboard API (optional, separate script)[cite: 1].
-* Uses the OpenAI API to automatically generate mappings between model names found on different leaderboards[cite: 1].
+* Scrapes leaderboard data from LiveBench.ai using Selenium and BeautifulSoup.
+* Scrapes leaderboard data from the LMSYS Chatbot Arena Hugging Face Space by parsing embedded configuration data.
+* Scrapes data from the Hugging Face Open LLM Leaderboard API (optional, separate script).
+* Uses the OpenAI API to automatically generate mappings between model names found on different leaderboards.
 * Merges data from LiveBench and LMSYS based on the generated mapping.
 * Includes a validation script (`check_mapping.py`) to verify the integrity and coverage of the generated model name mapping.
 
@@ -39,7 +39,7 @@ scrape-llm-leaderboards
     ```
 3.  **Install Dependencies:**
     ```bash
-    pip install -r requirements.txt [cite: 1]
+    pip install -r requirements.txt
     ```
 4.  **OpenAI API Key:**
     * This project requires an OpenAI API key to generate the model name mappings using the `API_merge.py` script.
@@ -62,13 +62,13 @@ Follow these steps to scrape, map, and merge the leaderboard data:
     ```bash
     python scrape_livebench.py
     ```
-    This will create/update `csv/livebench.csv`[cite: 6].
+    This will create/update `csv/livebench.csv`.
 
 2.  **Scrape LMSYS:** Run the script to get the latest data from the LMSYS Arena leaderboard.
     ```bash
     python scrape_lmsys.py
     ```
-    This will create/update `csv/lmsys.csv`[cite: 3].
+    This will create/update `csv/lmsys.csv`.
 
 3.  **Map and Merge Data:** Run the main merging script.
     ```bash
@@ -76,7 +76,7 @@ Follow these steps to scrape, map, and merge the leaderboard data:
     ```
     * This script first loads `csv/livebench.csv` and `csv/lmsys.csv`.
     * If `model_mapping.json` doesn't exist, is empty, or is invalid, it will call the OpenAI API to generate it. **Note:** This step requires a valid `OPENAI_API_KEY` in your `.env` file.
-    * It then uses the mapping to merge the data and saves the result to `merged_leaderboards.csv`[cite: 2].
+    * It then uses the mapping to merge the data and saves the result to `merged_leaderboards.csv`.
 
 4.  **Validate Mapping (Optional):** Run the check script to ensure the mapping file is valid and covers the models found in the source CSVs.
     ```bash
@@ -94,11 +94,11 @@ Follow these steps to scrape, map, and merge the leaderboard data:
 
 The project relies on the following Python libraries:
 
-* `requests` [cite: 1]
-* `pandas` [cite: 1]
-* `beautifulsoup4` [cite: 1]
-* `lxml` [cite: 1]
-* `selenium` [cite: 1]
+* `requests` 
+* `pandas` 
+* `beautifulsoup4` 
+* `lxml` 
+* `selenium` 
 * `openai` (implicitly used by `API_merge.py`)
 * `python-dotenv` (implicitly used by `API_merge.py`)
 
@@ -112,6 +112,6 @@ Install them using `pip install -r requirements.txt`.
 
 ## Output
 
-* **`merged_leaderboards.csv`:** The primary output file, containing merged data from LiveBench and LMSYS leaderboards, with model names standardized[cite: 2].
+* **`merged_leaderboards.csv`:** The primary output file, containing merged data from LiveBench and LMSYS leaderboards, with model names standardized.
 * **`model_mapping.json`:** The JSON file storing the mapping between LiveBench and LMSYS model names, generated (or loaded) by `API_merge.py`.
 * **`csv/livebench.csv`**, **`csv/lmsys.csv`**, **`csv/huggingface_v2.csv`:** Raw data scraped from the respective sources.
