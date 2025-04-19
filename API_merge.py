@@ -11,9 +11,9 @@ load_dotenv()
 
 # --- Configuration ---
 CSV_DIR       = "csv"
-LIVEBENCH_CSV = os.path.join(CSV_DIR, "livebench_custom.csv")
+LIVEBENCH_CSV = os.path.join(CSV_DIR, "livebench.csv")
 LMSYS_CSV     = os.path.join(CSV_DIR, "lmsys.csv")
-MAPPING_PATH  = "model_mapping_new.json" # File to store the model name mapping
+MAPPING_PATH  = "model_mapping.json" # File to store the model name mapping
 
 # --- Model Configuration ---
 # Define the OpenAI model to use for name matching

@@ -11,7 +11,7 @@ import time
 # --- Configuration ---
 CSV_DIR = "csv"
 LIVEBENCH_URL = "https://livebench.ai/#/"
-OUTPUT_CSV = os.path.join(CSV_DIR, "livebench_custom.csv") # More generic name
+OUTPUT_CSV = os.path.join(CSV_DIR, "livebench.csv") # More generic name
 WAIT_TIMEOUT = 10 # Seconds to wait for elements
 
 # --- Interaction Configuration ---
