@@ -35,6 +35,49 @@ except Exception as e:
     print(f"An unexpected error occurred while loading CSV files: {e}")
     exit(1)
 
+# -------------- START: COLUMN MODIFICATIONS --------------
+
+# 1.1) Modify lmsys DataFrame BEFORE mapping/merge
+try:
+    print("Modifying lmsys DataFrame columns...")
+    # Rename columns in lmsys
+    lmsys_rename_map = {
+        "model": "Model Name (Arena)",
+        "arena_score": "Arena Score",
+        "95_pct_ci": "95% Confidence Interval",
+        "license": "Model License",
+        "knowledge_cutoff": "Model Knowledge Cutoff",
+        "model_url": "Model Link (Arena)",
+        # --- New rules ---
+        "rank": "Arena Rank (No Style Control)",
+        "rank_stylectrl": "Arena Rank (With Style Control)",
+        "votes": "# of Votes"
+        # --- End new rules ---
+    }
+    lmsys = lmsys.rename(columns=lmsys_rename_map)
+    print(f"Renamed columns in lmsys: {list(lmsys_rename_map.values())}")
+
+    # Drop columns from lmsys
+    lmsys_drop_cols = ["organization", "model_name"]
+    # Only drop columns that actually exist to avoid errors
+    lmsys_cols_to_drop = [col for col in lmsys_drop_cols if col in lmsys.columns]
+    if lmsys_cols_to_drop:
+        lmsys = lmsys.drop(columns=lmsys_cols_to_drop)
+        print(f"Dropped columns from lmsys: {lmsys_cols_to_drop}")
+    else:
+        print("Columns 'organization', 'model_name' not found in lmsys, skipping drop.")
+
+except KeyError as e:
+    print(f"Error modifying lmsys DataFrame: Column {e} not found. Please check CSV headers.")
+    exit(1)
+except Exception as e:
+    print(f"An unexpected error occurred while modifying lmsys DataFrame: {e}")
+    traceback.print_exc()
+    exit(1)
+
+# -------------- END: COLUMN MODIFICATIONS --------------
+
+
 # Initialize mapping variable
 mapping = None
 
@@ -79,11 +122,12 @@ if mapping is None:
         # Ensure the columns exist before proceeding
         if "Model" not in livebench.columns:
              raise KeyError("'Model' column not found in livebench CSV.")
-        if "model" not in lmsys.columns:
-             raise KeyError("'model' column not found in lmsys CSV.")
+        # Use the *new* column name for lmsys
+        if "Model Name (Arena)" not in lmsys.columns:
+             raise KeyError("'Model Name (Arena)' column not found in lmsys CSV (was it renamed correctly?).")
 
         names_lb = livebench["Model"].dropna().unique().tolist()
-        names_ls = lmsys["model"].dropna().unique().tolist()
+        names_ls = lmsys["Model Name (Arena)"].dropna().unique().tolist() # Use renamed column
     except KeyError as e:
         print(f"Error accessing columns: {e}. Please check CSV file headers.")
         exit(1)
@@ -104,7 +148,7 @@ You are given two lists of AI model names scraped from different sites:
 List A (livebench):
 {names_lb}
 
-List B (lmsys):
+List B (lmsys, potentially renamed):
 {names_ls}
 
 Carefully compare the names. For each name in List A, find the most likely corresponding name in List B.
@@ -280,25 +324,62 @@ else:
 
 # 8) Standardize model names in livebench using the map and merge
 try:
-    # Add the 'model_std' column; missing models in map_dict will result in NaN
+    # Add the 'model_std' column using the original 'Model' column from livebench; missing models in map_dict will result in NaN
     # *** Explicitly cast to object dtype to prevent float64 issues with merge ***
     livebench["model_std"] = livebench["Model"].map(map_dict).astype(object)
-    print("Created 'model_std' column in livebench DataFrame.")
+    print("Created temporary 'model_std' column in livebench DataFrame for merging.")
     # Optional: Print dtypes to verify
     # print("Livebench dtypes after adding model_std:\n", livebench.dtypes)
-    # print("LMSys dtypes:\n", lmsys.dtypes)
+    # print("LMSys dtypes (after rename):\n", lmsys.dtypes)
 
 
-    # Perform the merge
+    # Perform the merge using the standardized name from livebench and the *renamed* key from lmsys
     print("Attempting to merge DataFrames...")
     merged = livebench.merge(
         lmsys,
-        left_on="model_std",      # Use the standardized name from livebench (object dtype)
-        right_on="model",         # Match with the 'model' column in lmsys (should be object/string)
-        how="left",               # Keep only keys that present in both livebench and lmsys
-        suffixes=("_lb", "_ls")   # Suffixes for overlapping column names
+        left_on="model_std",           # Use the standardized name from livebench (object dtype)
+        right_on="Model Name (Arena)", # Use the RENAMED 'model' column in lmsys (should be object/string)
+        how="left",                    # Keep only keys that present in both livebench and lmsys
+        suffixes=("_lb", "_ls")        # Suffixes for overlapping column names (less likely needed now)
     )
     print(f"Successfully merged the two dataframes. Result shape: {merged.shape}")
+
+    # -------------- START: POST-MERGE CLEANUP --------------
+    print("Performing post-merge column renaming and dropping...")
+
+    # Rename columns originating from livebench in the merged DataFrame
+    merged_rename_map = {
+        "Model": "Model Name (LiveBench)",      # Original 'Model' from livebench
+        "Model Link": "Model Link (LiveBench)"  # Original 'Model Link' from livebench
+        # Note: 'model_url' from lmsys was already renamed to 'Model Link (Arena)' before the merge.
+        # If suffixes were added (e.g., 'Model_lb'), adjust the keys here accordingly.
+        # Example if suffixes were added:
+        # "Model_lb": "Model Name (LiveBench)",
+        # "Model Link_lb": "Model Link (LiveBench)"
+    }
+    # Check if suffixed columns exist and prioritize renaming them if they do
+    final_rename_map = {}
+    for orig_col, new_col in merged_rename_map.items():
+        suffixed_col = orig_col + "_lb"
+        if suffixed_col in merged.columns:
+            final_rename_map[suffixed_col] = new_col
+        elif orig_col in merged.columns:
+            final_rename_map[orig_col] = new_col
+
+    if final_rename_map:
+        merged = merged.rename(columns=final_rename_map)
+        print(f"Renamed columns post-merge: {list(final_rename_map.values())}")
+
+
+    # Drop the temporary 'model_std' column used for merging
+    if "model_std" in merged.columns:
+        merged = merged.drop(columns=["model_std"])
+        print("Dropped temporary 'model_std' column.")
+    else:
+        print("Temporary 'model_std' column not found post-merge, skipping drop.")
+
+    # -------------- END: POST-MERGE CLEANUP --------------
+
 
     # 9) Save the merged table
     output_csv = "merged_leaderboards.csv"
@@ -311,7 +392,7 @@ try:
     # print(f"✅ Pickled merged results to {output_pkl}")
 
 except KeyError as e:
-    print(f"Error during merge/save: Missing column {e}. Check CSV headers and mapping keys.")
+    print(f"Error during merge/save: Missing column {e}. Check CSV headers, mapping keys, and renaming logic.")
     traceback.print_exc()
 except ValueError as e:
     # Catch potential merge errors like the dtype mismatch more specifically
@@ -320,8 +401,8 @@ except ValueError as e:
     # Check dtypes only if the columns exist
     if 'model_std' in livebench.columns:
         print("Livebench 'model_std' dtype:", livebench['model_std'].dtype)
-    if 'model' in lmsys.columns:
-        print("LMSys 'model' dtype:", lmsys['model'].dtype)
+    if 'Model Name (Arena)' in lmsys.columns:
+        print("LMSys 'Model Name (Arena)' dtype:", lmsys['Model Name (Arena)'].dtype)
     traceback.print_exc()
 except Exception as e:
     print(f"An unexpected error occurred during merging or saving results: {e}")
