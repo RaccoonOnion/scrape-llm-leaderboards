@@ -1,0 +1,317 @@
+[
+  {
+    "model_livebench": "o3-2025-04-16-high",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "o3-2025-04-16-medium",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "o4-mini-2025-04-16-high",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "gemini-2.5-pro-exp-03-25",
+    "model_lmsys": "Gemini-2.5-Pro-Exp-03-25",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "o4-mini-2025-04-16-medium",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "o1-2024-12-17-high",
+    "model_lmsys": "o1-2024-12-17",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "o3-mini-2025-01-31-high",
+    "model_lmsys": "o3-mini-high",
+    "confidence": 0.8
+  },
+  {
+    "model_livebench": "gemini-2.5-flash-preview-04-17",
+    "model_lmsys": "Gemini-2.5-Flash-Preview-04-17",
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "claude-3-7-sonnet-20250219-thinking-64k",
+    "model_lmsys": "Claude 3.7 Sonnet (thinking-32k)",
+    "confidence": 0.8
+  },
+  {
+    "model_livebench": "grok-3-mini-beta-high",
+    "model_lmsys": "Grok-3-Preview-02-24",
+    "confidence": 0.6
+  },
+  {
+    "model_livebench": "deepseek-r1",
+    "model_lmsys": "DeepSeek-R1",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "o3-mini-2025-01-31-medium",
+    "model_lmsys": "o3-mini",
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "qwq-32b",
+    "model_lmsys": "QwQ-32B",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "gpt-4.5-preview-2025-02-27",
+    "model_lmsys": "GPT-4.5-Preview",
+    "confidence": 0.9
+  },
+  {
+    "model_livebench": "gemini-2.0-flash-thinking-exp-01-21",
+    "model_lmsys": "Gemini-2.0-Flash-Thinking-Exp-01-21",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "gemini-2.0-pro-exp-02-05",
+    "model_lmsys": "Gemini-2.0-Pro-Exp-02-05",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "o3-mini-2025-01-31-low",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "gpt-4.1-2025-04-14",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "claude-3-7-sonnet-20250219-base",
+    "model_lmsys": "Claude 3.7 Sonnet",
+    "confidence": 0.7
+  },
+  {
+    "model_livebench": "deepseek-v3-0324",
+    "model_lmsys": "DeepSeek-V3-0324",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "grok-3-beta",
+    "model_lmsys": "Grok-3-Preview-02-24",
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "chatgpt-4o-latest-2025-03-27",
+    "model_lmsys": "ChatGPT-4o-latest (2025-03-26)",
+    "confidence": 0.9
+  },
+  {
+    "model_livebench": "gpt-4.1-mini-2025-04-14",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "qwen2.5-max",
+    "model_lmsys": "Qwen2.5-Max",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "gemini-2.0-flash-001",
+    "model_lmsys": "Gemini-2.0-Flash-001",
+    "confidence": 0.5
+  },
+  {
+    "model_livebench": "deepseek-r1-distill-llama-70b",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "llama-4-maverick-17b-128e-instruct",
+    "model_lmsys": "Llama-4-Maverick-17B-128E-Instruct",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "o1-mini-2024-09-12",
+    "model_lmsys": "o1-mini",
+    "confidence": 0.8
+  },
+  {
+    "model_livebench": "hunyuan-turbos-20250313",
+    "model_lmsys": "Hunyuan-TurboS-20250226",
+    "confidence": 0.6
+  },
+  {
+    "model_livebench": "claude-3-5-sonnet-20241022",
+    "model_lmsys": "Claude 3.5 Sonnet (20241022)",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "step-2-16k-202411",
+    "model_lmsys": "Step-2-16K-Exp",
+    "confidence": 0.5
+  },
+  {
+    "model_livebench": "gpt-4o-2024-08-06",
+    "model_lmsys": "GPT-4o-2024-08-06",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "deepseek-r1-distill-qwen-32b",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "grok-2-1212",
+    "model_lmsys": "Grok-2-08-13",
+    "confidence": 0.5
+  },
+  {
+    "model_livebench": "gemini-2.0-flash-lite-001",
+    "model_lmsys": "Gemini-2.0-Flash-Lite",
+    "confidence": 0.6
+  },
+  {
+    "model_livebench": "meta-llama-3.1-405b-instruct-turbo",
+    "model_lmsys": "Meta-Llama-3.1-405B-Instruct",
+    "confidence": 0.9
+  },
+  {
+    "model_livebench": "learnlm-1.5-pro-experimental",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "gpt-4o-2024-11-20",
+    "model_lmsys": "GPT-4o-2024-08-06",
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "gemma-3-27b-it",
+    "model_lmsys": "Gemma-3-27B-it",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "llama-3.3-70b-instruct-turbo",
+    "model_lmsys": "Llama-3.3-70B-Instruct",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "claude-3-opus-20240229",
+    "model_lmsys": "Claude 3 Opus",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "command-a-03-2025",
+    "model_lmsys": "Command A (03-2025)",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "dracarys2-72b-instruct",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "mistral-large-2411",
+    "model_lmsys": "Mistral-Large-2411",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "qwen2.5-72b-instruct-turbo",
+    "model_lmsys": "Qwen2.5-72B-Instruct",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "dracarys2-llama-3.1-70b-instruct",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "gemma-3-12b-it",
+    "model_lmsys": null,
+    "confidence": 0.4
+  },
+  {
+    "model_livebench": "mistral-small-2503",
+    "model_lmsys": "Mistral-Small-24B-Instruct-2501",
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "phi-4",
+    "model_lmsys": "Phi-4",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "meta-llama-3.1-70b-instruct-turbo",
+    "model_lmsys": "Meta-Llama-3.1-70B-Instruct",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "amazon.nova-pro-v1:0",
+    "model_lmsys": "Amazon Nova Pro 1.0",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "gpt-4.1-nano-2025-04-14",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "claude-3-5-haiku-20241022",
+    "model_lmsys": "Claude 3.5 Haiku (20241022)",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "gpt-4o-mini-2024-07-18",
+    "model_lmsys": "GPT-4o-mini-2024-07-18",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "gemini-1.5-flash-8b-001",
+    "model_lmsys": "Gemini-1.5-Flash-8B-001",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "amazon.nova-lite-v1:0",
+    "model_lmsys": "Amazon Nova Lite 1.0",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "azerogpt",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
+    "model_livebench": "gemma-3-4b-it",
+    "model_lmsys": null,
+    "confidence": 0.5
+  },
+  {
+    "model_livebench": "command-r-plus-08-2024",
+    "model_lmsys": "Command R+ (08-2024)",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "qwen2.5-7b-instruct-turbo",
+    "model_lmsys": null,
+    "confidence": 0.4
+  },
+  {
+    "model_livebench": "amazon.nova-micro-v1:0",
+    "model_lmsys": "Amazon Nova Micro 1.0",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "command-r-08-2024",
+    "model_lmsys": "Command R (08-2024)",
+    "confidence": 1.0
+  },
+  {
+    "model_livebench": "meta-llama-3.1-8b-instruct-turbo",
+    "model_lmsys": "Meta-Llama-3.1-8B-Instruct",
+    "confidence": 1.0
+  }
+]

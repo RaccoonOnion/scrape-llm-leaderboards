@@ -11,9 +11,9 @@ load_dotenv()
 
 # --- Configuration ---
 CSV_DIR       = "csv"
-LIVEBENCH_CSV = os.path.join(CSV_DIR, "livebench.csv")
+LIVEBENCH_CSV = os.path.join(CSV_DIR, "livebench_custom.csv")
 LMSYS_CSV     = os.path.join(CSV_DIR, "lmsys.csv")
-MAPPING_PATH  = "model_mapping_4omini.json" # File to store the model name mapping
+MAPPING_PATH  = "model_mapping_new.json" # File to store the model name mapping
 
 # --- Model Configuration ---
 # Define the OpenAI model to use for name matching
@@ -295,7 +295,7 @@ try:
         lmsys,
         left_on="model_std",      # Use the standardized name from livebench (object dtype)
         right_on="model",         # Match with the 'model' column in lmsys (should be object/string)
-        how="left",               # Keep all rows from livebench, add lmsys data where match found
+        how="left",               # Keep only keys that present in both livebench and lmsys
         suffixes=("_lb", "_ls")   # Suffixes for overlapping column names
     )
     print(f"Successfully merged the two dataframes. Result shape: {merged.shape}")
