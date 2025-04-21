@@ -176,7 +176,7 @@
   },
   {
     "model_livebench": "meta-llama-3.1-405b-instruct-turbo",
-    "model_lmsys": "Meta-Llama-3.1-405B-Instruct",
+    "model_lmsys": "Meta-Llama-3.1-405B-Instruct-bf16",
     "confidence": 0.9
   },
   {

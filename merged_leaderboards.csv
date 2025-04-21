@@ -34,7 +34,7 @@ gpt-4o-2024-08-06,OpenAI,49.21,42.58,31.81,45.72,60.91,45.63,68.58,https://opena
 deepseek-r1-distill-qwen-32b,DeepSeek,48.14,44.36,52.33,60.13,45.41,30.92,55.71,https://huggingface.co/deepseek-ai/DeepSeek-R1-Distill-Qwen-32B,,,,,,,,,
 grok-2-1212,xAI,48.11,36.72,26.14,55.94,54.45,45.79,69.63,https://x.ai/blog/grok-1212,28.0,29.0,Grok-2-08-13,1288.0,+2/-2,67102.0,Proprietary,2024/3,https://x.ai/blog/grok-2
 gemini-2.0-flash-lite-001,Google,47.77,32.25,23.38,54.97,65.45,33.94,76.63,https://developers.googleblog.com/en/start-building-with-the-gemini-2-0-flash-family/,16.0,20.0,Gemini-2.0-Flash-Lite,1311.0,+5/-5,22122.0,Proprietary,Unknown,https://aistudio.google.com/prompts/new_chat?model=gemini-2.0-flash-lite
-meta-llama-3.1-405b-instruct-turbo,Meta,47.54,40.58,28.81,40.49,55.85,43.58,75.9,https://www.together.ai/blog/meta-llama-3-1,,,,,,,,,
+meta-llama-3.1-405b-instruct-turbo,Meta,47.54,40.58,28.81,40.49,55.85,43.58,75.9,https://www.together.ai/blog/meta-llama-3-1,38.0,25.0,Meta-Llama-3.1-405B-Instruct-bf16,1269.0,+2/-3,43795.0,Llama 3.1 Community,2023/12,https://ai.meta.com/blog/meta-llama-3-1/
 learnlm-1.5-pro-experimental,Google,47.49,34.86,32.38,56.71,54.97,37.86,68.16,https://ai.google.dev/gemini-api/docs/learnlm,,,,,,,,,
 gpt-4o-2024-11-20,OpenAI,47.03,39.75,35.19,41.48,56.15,44.68,64.94,https://openai.com/index/hello-gpt-4o/,41.0,29.0,GPT-4o-2024-08-06,1265.0,+2/-2,47982.0,Proprietary,2023/10,https://platform.openai.com/docs/models/gpt-4o
 gemma-3-27b-it,Google,46.63,34.42,25.43,52.27,51.45,41.31,74.9,https://blog.google/technology/developers/gemma-3/,11.0,14.0,Gemma-3-27B-it,1342.0,+5/-6,9976.0,Gemma,Unknown,http://aistudio.google.com/app/prompts/new_chat?model=gemma-3-27b-it
