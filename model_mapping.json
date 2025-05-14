@@ -1,5 +1,10 @@
 [
   {
+    "model_livebench": "mistral-medium-2505",
+    "model_lmsys": null,
+    "confidence": 0.0
+  },
+  {
     "model_livebench": "o3-2025-04-16-high",
     "model_lmsys": "o3-2025-04-16",
     "confidence": 0.0
